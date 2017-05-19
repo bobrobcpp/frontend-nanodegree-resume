@@ -1,10 +1,4 @@
 
-var name = "Robert King";
-var role = "Web Developer";
-var formattedName = HTMLheaderName.replace("%data%",name);
-var formattedRole = HTMLheaderRole.replace("%data%", role);
-$("#header").prepend(formattedRole);
-$("#header").prepend(formattedName);
 
 var bio = {
   "name": "Robert King",
@@ -16,7 +10,7 @@ var bio = {
     "location": "London"
   },
   "biopic": "images/me.jpg",
-  "welcomeMessage": "Welcome",
+  "welcomeMessage": "Why are you here? What is your problem?",
   "skills": ["HTML","CSS","C#","Geomatics","Surveying","Hydrography"]
 
 };
@@ -26,29 +20,37 @@ var work = {
     {
     "title" : "Hydrographic Surveyor",
     "employer" : "Freelance",
-    "dates": "2012-2016",
-    "location" : "Worldwide",
-    "description" : "Navigational surveyingand multibeam processing for geophysical surveys"
+    "dates": "Dec 2016-Present",
+    "location" : "London",
+    "description" : "Navigational surveying and multibeam processing for geophysical surveys"
+   },
+   {
+    "title" : "Hydrographic Surveyor",
+    "employer" : "Gardline Geosurvey",
+    "dates": "Jan 2012- Dec 2016",
+    "location" : "North Sea",
+    "description" : "Navigational surveying and multibeam processing for geophysical surveys"
    }
   ]
-}
+};
+
 var projects = {
   "projects":[
     {
     "title" : "Portfolio Project",
     "dates" : "April-2017",
     "description" : "Created a responsive website with HMTL, CSS and media queries",
-    "images" : ["C:\Users\Robert\Documents\UDF\portfolio\images"]
+    "images" : "http://192.168.56.1:92/"
    }
   ]
-}
 
+};
 
 var education ={
   "schools":[
   {
   "name": "University College London",
-  "city": "London",
+  "location": "London",
   "dates": 2011,
   "degree": "MSc",
   "majors": ["Hydrographic Surveying"],
@@ -56,14 +58,39 @@ var education ={
 },
 {
   "name": "University of Sheffield",
-  "city": "Sheffield",
+  "location": "Sheffield",
   "dates": 2009,
   "degree": "BA",
   "majors": ["Geography"],
   "url":"https://www.sheffield.ac.uk/"
 }
-]
+],
+"onlineCourses":[
+{
+"title":"Front End Web Developer Nanodegree",
+"school":"Udacity",
+"dates":"March 2017-Present",
+"url": "https://classroom.udacity.com/me"
+},
+{
+"title":"Networking for Web Developers",
+"school":"Udacity",
+"dates":"March 2017-Present",
+"url": "https://classroom.udacity.com/me"
 }
+]
+};
+
+
+
+
+
+var name = "Robert King";
+var role = "Web Developer";
+var formattedName = HTMLheaderName.replace("%data%",name);
+var formattedRole = HTMLheaderRole.replace("%data%", role);
+$("#header").prepend(formattedRole);
+$("#header").prepend(formattedName);
 
 var formatgit = HTMLgithub.replace("%data%", bio.contacts.github);
 var formatphone = HTMLmobile.replace("%data%",bio.contacts.mobile);
@@ -76,13 +103,82 @@ var formatwelcomeMessage = HTMLwelcomeMsg.replace("%data%",bio.welcomeMessage);
 
 
 $("#topContacts").append(formatgit,formatphone,formatlocation);
-$("#header").prepend(formatpic,formatwelcomeMessage,formatskills);
+$("#header").append(formatpic,formatwelcomeMessage);
 $("#main").append(work["position"]);
 $("#main").append(education.name);
 
 
 
+if(bio.skills.length > 0)
+{
+  $("#header").append(HTMLskillsStart);
+  // var formatSkill = HTMLskills.replace("%data%",bio.skills);
+  // $("#skills").append(formatSkill);
+
+  var formattedSkill = HTMLskills.replace("%data%",bio.skills[0]);
+  $("#skills").append(formattedSkill);
+    var formattedSkill = HTMLskills.replace("%data%",bio.skills[1]);
+  $("#skills").append(formattedSkill);
+    var formattedSkill = HTMLskills.replace("%data%",bio.skills[2]);
+  $("#skills").append(formattedSkill);
+    var formattedSkill = HTMLskills.replace("%data%",bio.skills[3]);
+  $("#skills").append(formattedSkill);
+    $("#skills").append(formattedSkill);
+    var formattedSkill = HTMLskills.replace("%data%",bio.skills[4]);
+  $("#skills").append(formattedSkill);
+    $("#skills").append(formattedSkill);
+    var formattedSkill = HTMLskills.replace("%data%",bio.skills[5]);
+  $("#skills").append(formattedSkill);
+}
 
 
 
+var displayWork = function(){
+  for(job in work.jobs)
+  {
+    $("#workExperience").append(HTMLworkStart);
+    var formatemployer = HTMLworkEmployer.replace("%data%",(work.jobs[job].employer));
+    var formattitle = HTMLworkTitle.replace("%data%",work.jobs[job].title);
+    var formatjdates = HTMLworkDates.replace("%data%",work.jobs[job].dates);
+    var formatjlocation = HTMLworkLocation.replace("%data%",work.jobs[job].location);
+    var formatjdescription = HTMLworkDescription.replace("%data%",work.jobs[job].description);
+    $(".work-entry:last").append(formatemployer+formattitle);
+    $(".work-entry:last").append(formatjdates + formatjlocation);
+    $(".work-entry:last").append(formatjdescription);
+  }
+}
 
+displayWork();
+
+$(document).click(function(loc) {
+  var x = loc.pageX;
+  var y = loc.pageY;
+  logClicks(x,y);
+});
+
+$("#main").append(internationalizeButton);
+
+var inName = (function(name){
+  var nameArray = name.split(" ");
+  var firstLetter = nameArray[0].slice(0,1).toUpperCase();
+  var theRest = nameArray[0].slice(1,nameArray[0].length).toLowerCase();
+  return firstLetter + theRest + " "  + nameArray[1].toUpperCase();
+});
+
+projects.display = function(){
+      $("#projects").append(HTMLprojectStart);
+      var formatptitle = HTMLprojectTitle.replace("%data%",projects.projects[0].title);
+      var formatpdates = HTMLprojectDates.replace("%data%",projects.projects[0].dates);
+      var formatpdescription = HTMLprojectDescription.replace("%data%",projects.projects[0].description);
+      var formatpimages = HTMLprojectImage.replace("%data%",projects.projects[0].images);
+      $(".project-entry:last").append(formatptitle);
+      $(".project-entry:last").append(formatpdates);
+      $(".project-entry:last").append(formatpdescription);
+      $(".project-entry:last").append(formatpimages);
+
+
+
+}
+projects.display();
+
+$("#mapDiv").append(googleMap);
