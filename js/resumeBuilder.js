@@ -40,7 +40,13 @@ var projects = {
     "title" : "Portfolio Project",
     "dates" : "April-2017",
     "description" : "Created a responsive website with HMTL, CSS and media queries",
-    "images" : "http://192.168.56.1:92/"
+    "images" : ["images/la-420.jpg","images/tiber-420.jpg","images/salalah-420.jpg"]
+   },
+   {
+    "title" : "Unity Project",
+    "dates" : "2016",
+    "description" : "Playing around in the unity editor",
+    "images" : ["images/tiber-420.jpg"]
    }
   ]
 
@@ -85,13 +91,9 @@ var education ={
 
 
 
-var name = "Robert King";
-var role = "Web Developer";
-var formattedName = HTMLheaderName.replace("%data%",name);
-var formattedRole = HTMLheaderRole.replace("%data%", role);
-$("#header").prepend(formattedRole);
-$("#header").prepend(formattedName);
 
+var formattedName = HTMLheaderName.replace("%data%",bio.name);
+var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
 var formatgit = HTMLgithub.replace("%data%", bio.contacts.github);
 var formatphone = HTMLmobile.replace("%data%",bio.contacts.mobile);
 var formatpic = HTMLbioPic.replace("%data%",bio.biopic);
@@ -100,8 +102,8 @@ var formatskills = HTMLskills.replace("%data%",bio.skills);
 var formatwelcomeMessage = HTMLwelcomeMsg.replace("%data%",bio.welcomeMessage);
 
 
-
-
+$("#header").prepend(formattedRole);
+$("#header").prepend(formattedName);
 $("#topContacts").append(formatgit,formatphone,formatlocation);
 $("#header").append(formatpic,formatwelcomeMessage);
 $("#main").append(work["position"]);
@@ -112,9 +114,6 @@ $("#main").append(education.name);
 if(bio.skills.length > 0)
 {
   $("#header").append(HTMLskillsStart);
-  // var formatSkill = HTMLskills.replace("%data%",bio.skills);
-  // $("#skills").append(formatSkill);
-
   var formattedSkill = HTMLskills.replace("%data%",bio.skills[0]);
   $("#skills").append(formattedSkill);
     var formattedSkill = HTMLskills.replace("%data%",bio.skills[1]);
@@ -123,17 +122,15 @@ if(bio.skills.length > 0)
   $("#skills").append(formattedSkill);
     var formattedSkill = HTMLskills.replace("%data%",bio.skills[3]);
   $("#skills").append(formattedSkill);
-    $("#skills").append(formattedSkill);
     var formattedSkill = HTMLskills.replace("%data%",bio.skills[4]);
   $("#skills").append(formattedSkill);
-    $("#skills").append(formattedSkill);
     var formattedSkill = HTMLskills.replace("%data%",bio.skills[5]);
   $("#skills").append(formattedSkill);
 }
 
 
 
-var displayWork = function(){
+work.display = function(){
   for(job in work.jobs)
   {
     $("#workExperience").append(HTMLworkStart);
@@ -147,14 +144,38 @@ var displayWork = function(){
     $(".work-entry:last").append(formatjdescription);
   }
 }
+work.display();
 
-displayWork();
 
-$(document).click(function(loc) {
-  var x = loc.pageX;
-  var y = loc.pageY;
-  logClicks(x,y);
-});
+
+projects.display = function(){
+
+  for(var i = 0; i < projects.projects.length; i ++)
+  {
+      $("#projects").append(HTMLprojectStart);
+      var formatptitle = HTMLprojectTitle.replace("%data%",projects.projects[i].title);
+      var formatpdates = HTMLprojectDates.replace("%data%",projects.projects[i].dates);
+      var formatpdescription = HTMLprojectDescription.replace("%data%",projects.projects[i].description);
+      $(".project-entry:last").append(formatptitle);
+      $(".project-entry:last").append(formatpdates);
+      $(".project-entry:last").append(formatpdescription);
+
+      for(var j = 0; j < projects.projects[i].images.length; j++)
+      {
+        var formatpimages = HTMLprojectImage.replace("%data%",projects.projects[i].images[j]);
+        $(".project-entry:last").append(formatpimages);
+      }
+    }
+}
+projects.display();
+
+
+
+$("#mapDiv").append(googleMap);
+
+// d3.selectAll("p").style("color", function() {
+//   return "hsl(" + Math.random() * 360 + ",100%,50%)";
+//
 
 $("#main").append(internationalizeButton);
 
@@ -164,21 +185,3 @@ var inName = (function(name){
   var theRest = nameArray[0].slice(1,nameArray[0].length).toLowerCase();
   return firstLetter + theRest + " "  + nameArray[1].toUpperCase();
 });
-
-projects.display = function(){
-      $("#projects").append(HTMLprojectStart);
-      var formatptitle = HTMLprojectTitle.replace("%data%",projects.projects[0].title);
-      var formatpdates = HTMLprojectDates.replace("%data%",projects.projects[0].dates);
-      var formatpdescription = HTMLprojectDescription.replace("%data%",projects.projects[0].description);
-      var formatpimages = HTMLprojectImage.replace("%data%",projects.projects[0].images);
-      $(".project-entry:last").append(formatptitle);
-      $(".project-entry:last").append(formatpdates);
-      $(".project-entry:last").append(formatpdescription);
-      $(".project-entry:last").append(formatpimages);
-
-
-
-}
-projects.display();
-
-$("#mapDiv").append(googleMap);
