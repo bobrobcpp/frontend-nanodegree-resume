@@ -10,7 +10,7 @@ var bio = {
     "location": "London"
   },
   "biopic": "images/me.jpg",
-  "welcomeMessage": "Why are you here? What is your problem?",
+  "welcomeMessage": "Welcome, please contact me with any queries.",
   "skills": ["HTML","CSS","C#","Geomatics","Surveying","Hydrography"]
 
 };
@@ -46,7 +46,7 @@ var projects = {
     "title" : "Unity Project",
     "dates" : "2016",
     "description" : "Playing around in the unity editor",
-    "images" : ["images/tiber-420.jpg"]
+    "images" : ["images/unity1-420.jpg","images/unity2-420.jpg","images/unity3-420.jpg"]
    }
   ]
 
@@ -95,6 +95,7 @@ var education ={
 var formattedName = HTMLheaderName.replace("%data%",bio.name);
 var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
 var formatgit = HTMLgithub.replace("%data%", bio.contacts.github);
+var formatemail = HTMLemail.replace("%data%", bio.contacts.email);
 var formatphone = HTMLmobile.replace("%data%",bio.contacts.mobile);
 var formatpic = HTMLbioPic.replace("%data%",bio.biopic);
 var formatlocation = HTMLlocation.replace("%data%",bio.contacts.location);
@@ -104,10 +105,12 @@ var formatwelcomeMessage = HTMLwelcomeMsg.replace("%data%",bio.welcomeMessage);
 
 $("#header").prepend(formattedRole);
 $("#header").prepend(formattedName);
-$("#topContacts").append(formatgit,formatphone,formatlocation);
+$("#topContacts").append(formatgit,formatphone,formatemail,formatlocation);
 $("#header").append(formatpic,formatwelcomeMessage);
 $("#main").append(work["position"]);
 $("#main").append(education.name);
+
+$("#footerContacts").append(formatgit,formatphone,formatemail,formatlocation);
 
 
 
@@ -144,7 +147,7 @@ work.display = function(){
     $(".work-entry:last").append(formatjdescription);
   }
 }
-work.display();
+
 
 
 
@@ -165,20 +168,20 @@ projects.display = function(){
       for(var j = 0; j < projects.projects[i].images.length; j++)
       {
         var formatpimages = HTMLprojectImage.replace("%data%",projects.projects[i].images[j]);
+
         $(".container:last").append(formatpimages);
+        $('img:last').addClass('proj-img');
       }
-      // $("img.project-entry").wrapAll("<div class='container' />");
     }
 }
+
+
+
+work.display();
 projects.display();
-
-
 
 $("#mapDiv").append(googleMap);
 
-// d3.selectAll("p").style("color", function() {
-//   return "hsl(" + Math.random() * 360 + ",100%,50%)";
-//
 
 $("#main").append(internationalizeButton);
 
