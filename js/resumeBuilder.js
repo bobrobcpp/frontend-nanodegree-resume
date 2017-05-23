@@ -160,11 +160,14 @@ projects.display = function(){
       $(".project-entry:last").append(formatpdates);
       $(".project-entry:last").append(formatpdescription);
 
+      $("<div class='container'></div>").insertAfter(".project-entry:last");
+
       for(var j = 0; j < projects.projects[i].images.length; j++)
       {
         var formatpimages = HTMLprojectImage.replace("%data%",projects.projects[i].images[j]);
-        $(".project-entry:last").append(formatpimages);
+        $(".container:last").append(formatpimages);
       }
+      // $("img.project-entry").wrapAll("<div class='container' />");
     }
 }
 projects.display();

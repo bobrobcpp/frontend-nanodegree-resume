@@ -23,7 +23,14 @@ h6 {
 .project-entry {
   padding: 0 5%;
 }
+.container{
+  padding: 0 5%;
+  display: flex;
+}
 
+img{
+  max-width: 32%;
+}
 h1 {
   font-size: 40px;
   color: black;
