@@ -258,21 +258,22 @@ span {
 
 .modal{
   display :block;
-  position:fixed;
+  position: relative;
   z-index: 1;
   width: 100%;
-  top: 25%;
-  left: 25%;
-  margin: auto;
+  max-width: 100%;
+  margin: 0.5em auto;
+  box-shadow: unset;
 }
 
 .pop-modal{
-  background-color: red;
   display :block;
   position:fixed;
   z-index: 1;
   width:50vw;
-  top: 25%;
+  top: 10%;
   left: 25%;
-  margin: auto;
+  margin: 20px;
+  height: 390px;
 }
+

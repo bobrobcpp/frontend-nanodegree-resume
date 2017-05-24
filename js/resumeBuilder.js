@@ -171,20 +171,25 @@ projects.display = function(){
 
         $(".container:last").append(formatpimages);
         $('img:last').addClass('proj-img');
-
-
-        // $('img:last').on("click","a,img", function (e) {
-        // e.preventDefault();
-        // alert("Hello");
-        // });
-
       }
+    }
+
+  $( '.container' ).on( 'click', 'a,img', function(e) {
+    if($(this).last().hasClass('modal')===false){
+  e.preventDefault();
+
+  $('.proj-img, .project-entry,.work-entry, p, h2,#map,a,.date-text').not(this).css('opacity',0.2);
+
+  $(this).clone().addClass('modal').appendTo('.container').wrap("<div class='pop-modal'></div>").attr( "src", function( i, val ) {
+  return val.replace("4","7");
+  });
 
     }
-          $( '.container' ).on( 'click', 'a,img', function(e) {
-        e.preventDefault();
-  $(this).clone().addClass('modal').appendTo('.container').wrap("<div class='pop-modal'></div>");
-        // $(this).wrap("<div class='pop-modal'></div>").appendTo('.container');
+    else{
+      $('.pop-modal').remove();
+      $('*').css('opacity',1);
+
+    }
         });
 }
 
