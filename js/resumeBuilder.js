@@ -137,7 +137,7 @@ work.display = function(){
   for(job in work.jobs)
   {
     $("#workExperience").append(HTMLworkStart);
-    var formatemployer = HTMLworkEmployer.replace("%data%",(work.jobs[job].employer));
+    var formatemployer = HTMLworkEmployer.replace("%data%",(work.jobs[job].employer)).replace("#","https://en.wikipedia.org/wiki/Hydrographic_survey");
     var formattitle = HTMLworkTitle.replace("%data%",work.jobs[job].title);
     var formatjdates = HTMLworkDates.replace("%data%",work.jobs[job].dates);
     var formatjlocation = HTMLworkLocation.replace("%data%",work.jobs[job].location);
@@ -163,7 +163,7 @@ projects.display = function(){
       $(".project-entry:last").append(formatpdates);
       $(".project-entry:last").append(formatpdescription);
 
-      $("<div class='container'></div>").insertAfter(".project-entry:last");
+      $("<div class='container imgContain'></div>").insertAfter(".project-entry:last");
 
       for(var j = 0; j < projects.projects[i].images.length; j++)
       {
@@ -171,8 +171,21 @@ projects.display = function(){
 
         $(".container:last").append(formatpimages);
         $('img:last').addClass('proj-img');
+
+
+        // $('img:last').on("click","a,img", function (e) {
+        // e.preventDefault();
+        // alert("Hello");
+        // });
+
       }
+
     }
+          $( '.container' ).on( 'click', 'a,img', function(e) {
+        e.preventDefault();
+  $(this).clone().addClass('modal').appendTo('.container').wrap("<div class='pop-modal'></div>");
+        // $(this).wrap("<div class='pop-modal'></div>").appendTo('.container');
+        });
 }
 
 
@@ -191,3 +204,8 @@ var inName = (function(name){
   var theRest = nameArray[0].slice(1,nameArray[0].length).toLowerCase();
   return firstLetter + theRest + " "  + nameArray[1].toUpperCase();
 });
+
+
+
+
+
