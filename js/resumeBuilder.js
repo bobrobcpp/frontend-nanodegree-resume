@@ -1,5 +1,6 @@
+// This file containsJavascript objects containing personal information in sections: bio, work, projects and education and functions to display them
 
-
+// Bio section and display function definition
 var bio = {
   "name": "Robert King",
   "role": "Web Developer",
@@ -12,9 +13,40 @@ var bio = {
   "biopic": "images/me.jpg",
   "welcomeMessage": "Welcome, please contact me with any queries.",
   "skills": ["HTML","CSS","C#","Geomatics","Surveying","Hydrography"]
-
 };
+bio.display= function(){
 
+  var formatName = HTMLheaderName.replace("%data%",bio.name);
+  var formatRole = HTMLheaderRole.replace("%data%", bio.role);
+  var formatgit = HTMLgithub.replace("%data%", bio.contacts.github);
+  var formatemail = HTMLemail.replace("%data%", bio.contacts.email);
+  var formatphone = HTMLmobile.replace("%data%",bio.contacts.mobile);
+  var formatpic = HTMLbioPic.replace("%data%",bio.biopic);
+  var formatlocation = HTMLlocation.replace("%data%",bio.contacts.location);
+  var formatskills = HTMLskills.replace("%data%",bio.skills);
+  var formatwelcomeMessage = HTMLwelcomeMsg.replace("%data%",bio.welcomeMessage);
+
+
+  $("#header").prepend(formatRole);
+  $("#header").prepend(formatName);
+  $("#topContacts").append(formatgit,formatphone,formatemail,formatlocation);
+  $("#header").append(formatpic,formatwelcomeMessage);
+  $("#main").append(work["position"]);
+  $("#main").append(education.name);
+  $("#footerContacts").append(formatgit,formatphone,formatemail,formatlocation);
+
+  if(bio.skills.length > 0)
+  {
+    $("#header").append(HTMLskillsStart);
+    for(var i = 0; i < bio.skills.length; i++){
+      var formattedSkill = HTMLskills.replace("%data%",bio.skills[i]);
+      $("#skills").append(formattedSkill);
+    }
+  }
+}
+
+
+// Work section and display function definition
 var work = {
   "jobs":[
     {
@@ -34,105 +66,6 @@ var work = {
   ]
 };
 
-var projects = {
-  "projects":[
-    {
-    "title" : "Portfolio Project",
-    "dates" : "April-2017",
-    "description" : "Created a responsive website with HMTL, CSS and media queries",
-    "images" : ["images/la-420.jpg","images/tiber-420.jpg","images/salalah-420.jpg"]
-   },
-   {
-    "title" : "Unity Project",
-    "dates" : "2016",
-    "description" : "Playing around in the unity editor",
-    "images" : ["images/unity1-420.jpg","images/unity2-420.jpg","images/unity3-420.jpg"]
-   }
-  ]
-
-};
-
-var education ={
-  "schools":[
-  {
-  "name": "University College London",
-  "location": "London",
-  "dates": 2011,
-  "degree": "MSc",
-  "majors": ["Hydrographic Surveying"],
-  "url":"https://www.ucl.ac.uk/"
-},
-{
-  "name": "University of Sheffield",
-  "location": "Sheffield",
-  "dates": 2009,
-  "degree": "BA",
-  "majors": ["Geography"],
-  "url":"https://www.sheffield.ac.uk/"
-}
-],
-"onlineCourses":[
-{
-"title":"Front End Web Developer Nanodegree",
-"school":"Udacity",
-"dates":"March 2017-Present",
-"url": "https://classroom.udacity.com/me"
-},
-{
-"title":"Networking for Web Developers",
-"school":"Udacity",
-"dates":"March 2017-Present",
-"url": "https://classroom.udacity.com/me"
-}
-]
-};
-
-
-
-
-
-
-var formattedName = HTMLheaderName.replace("%data%",bio.name);
-var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
-var formatgit = HTMLgithub.replace("%data%", bio.contacts.github);
-var formatemail = HTMLemail.replace("%data%", bio.contacts.email);
-var formatphone = HTMLmobile.replace("%data%",bio.contacts.mobile);
-var formatpic = HTMLbioPic.replace("%data%",bio.biopic);
-var formatlocation = HTMLlocation.replace("%data%",bio.contacts.location);
-var formatskills = HTMLskills.replace("%data%",bio.skills);
-var formatwelcomeMessage = HTMLwelcomeMsg.replace("%data%",bio.welcomeMessage);
-
-
-$("#header").prepend(formattedRole);
-$("#header").prepend(formattedName);
-$("#topContacts").append(formatgit,formatphone,formatemail,formatlocation);
-$("#header").append(formatpic,formatwelcomeMessage);
-$("#main").append(work["position"]);
-$("#main").append(education.name);
-
-$("#footerContacts").append(formatgit,formatphone,formatemail,formatlocation);
-
-
-
-if(bio.skills.length > 0)
-{
-  $("#header").append(HTMLskillsStart);
-  var formattedSkill = HTMLskills.replace("%data%",bio.skills[0]);
-  $("#skills").append(formattedSkill);
-    var formattedSkill = HTMLskills.replace("%data%",bio.skills[1]);
-  $("#skills").append(formattedSkill);
-    var formattedSkill = HTMLskills.replace("%data%",bio.skills[2]);
-  $("#skills").append(formattedSkill);
-    var formattedSkill = HTMLskills.replace("%data%",bio.skills[3]);
-  $("#skills").append(formattedSkill);
-    var formattedSkill = HTMLskills.replace("%data%",bio.skills[4]);
-  $("#skills").append(formattedSkill);
-    var formattedSkill = HTMLskills.replace("%data%",bio.skills[5]);
-  $("#skills").append(formattedSkill);
-}
-
-
-
 work.display = function(){
   for(job in work.jobs)
   {
@@ -149,8 +82,23 @@ work.display = function(){
 }
 
 
-
-
+// Projects section and display function definition
+var projects = {
+  "projects":[
+    {
+    "title" : "Portfolio Project",
+    "dates" : "April-2017",
+    "description" : "Created a responsive website with HMTL, CSS and media queries",
+    "images" : ["images/la-420.jpg","images/tiber-420.jpg","images/salalah-420.jpg"]
+   },
+   {
+    "title" : "Unity Project",
+    "dates" : "2016",
+    "description" : "Playing around in the unity editor",
+    "images" : ["images/unity1-420.jpg","images/unity2-420.jpg","images/unity3-420.jpg"]
+   }
+  ]
+};
 projects.display = function(){
 
   for(var i = 0; i < projects.projects.length; i ++)
@@ -195,12 +143,79 @@ projects.display = function(){
 
 
 
+// Education section and display function definition
+var education ={
+  "schools":[
+  {
+  "name": "University College London",
+  "location": "London",
+  "dates": 2011,
+  "degree": "MSc",
+  "majors": ["Hydrographic Surveying"],
+  "url":"https://www.ucl.ac.uk/"
+},
+{
+  "name": "University of Sheffield",
+  "location": "Sheffield",
+  "dates": 2009,
+  "degree": "BA",
+  "majors": ["Geography"],
+  "url":"https://www.sheffield.ac.uk/"
+}
+],
+"onlineCourses":[
+{
+"title":"Front End Web Developer Nanodegree",
+"school":"Udacity",
+"dates":"March 2017-Present",
+"url": "https://classroom.udacity.com/me"
+},
+{
+"title":"Networking for Web Developers",
+"school":"Udacity",
+"dates":"March 2017-Present",
+"url": "https://classroom.udacity.com/me"
+}
+]
+};
+
+education.display = function(){
+  if(education.schools.length > 0){
+    for(var i = 0; i < education.schools.length; i ++){
+      $("#education").append(HTMLschoolStart);
+      var formatschoolName = HTMLschoolName.replace("%data%", education.schools[i].name).replace("#", education.schools[i].url);
+      var formatschoolDegree = HTMLschoolDegree.replace("%data%", education.schools[i].degree);
+      var formatschoolDates = HTMLschoolDates.replace("%data%", education.schools[i].dates);
+      var formatschoolLocation = HTMLschoolLocation.replace("%data%", education.schools[i].location);
+      var formatschoolMajor = HTMLschoolMajor.replace("%data%", education.schools[i].majors);
+      $(".education-entry:last").append(formatschoolName + formatschoolDegree,formatschoolDates,formatschoolLocation,formatschoolMajor);
+
+    }
+  }
+    if(education.onlineCourses.length > 0){
+      $(".education-entry:last").append(HTMLonlineClasses);
+      for(var i = 0; i < education.onlineCourses.length; i ++){
+        var formatonlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[i].title).replace("#", education.onlineCourses[i].url);
+        var formatonlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[i].school);
+        var formatonlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[i].dates);
+        $(".education-entry:last").append(formatonlineTitle, formatonlineSchool,formatonlineDates);
+    }
+  }
+
+}
+
+
+// Function calls to run page and display all sections
+bio.display();
 work.display();
 projects.display();
-
+education.display();
 $("#mapDiv").append(googleMap);
 
 
+
+
+// Optional addition of internationalize button of bio name with required inName function used in helper.js
 $("#main").append(internationalizeButton);
 
 var inName = (function(name){
