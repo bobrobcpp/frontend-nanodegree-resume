@@ -27,7 +27,7 @@ bio.display = function() {
     $("#header").prepend(formatName);
     $("#topContacts").append(formatGit, formatPhone, formatEmail, formatLocation);
     $("#header").append(formatPic, formatWelcomeMessage);
-    $("#main").append(work["position"]);
+    $("#main").append(work.position);
     $("#main").append(education.name);
     $("#footerContacts").append(formatGit, formatPhone, formatEmail, formatLocation);
 
@@ -89,11 +89,11 @@ education.display = function() {
     }
     if (education.onlineCourses.length > 0) {
         $("#education").append(HTMLonlineClasses);
-        for (var i = 0; i < education.onlineCourses.length; i++) {
+        for (var j = 0; j < education.onlineCourses.length; j++) {
             $("#education").append(HTMLschoolStart);
-            var formatOnlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[i].title).replace("#", education.onlineCourses[i].url);
-            var formatOnlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[i].school);
-            var formatOnlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[i].dates);
+            var formatOnlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[j].title).replace("#", education.onlineCourses[j].url);
+            var formatOnlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[j].school);
+            var formatOnlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[j].dates);
             $(".education-entry:last").append(formatOnlineTitle + formatOnlineSchool);
             $(".education-entry:last").append(formatOnlineDates);
         }
