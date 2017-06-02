@@ -18,29 +18,27 @@ h6 {
   overflow: auto;
 }
 
-
 .education-entry,
 .work-entry,
 .project-entry {
   padding: 0 5%;
 }
 
-
-.container{
+.container {
   padding: 0 4%;
   margin: 2px;
   display: flex;
 }
 
-img{
+img {
   max-width: 30vw;
 }
 
-.proj-img{
-  box-shadow: 4px 4px 0px #888888;
+.proj-img {
+  box-shadow: 4px 4px 0px #888;
   border-radius: 10px;
   padding: 0px;
-  margin:10px;
+  margin: 10px;
   cursor: pointer;
 }
 
@@ -69,7 +67,7 @@ h3 {
 h4 {
   font-weight: bold;
   font-size: 14px;
-  color: #4a4a4a;
+  color: #444;
   line-height: 17px;
 }
 
@@ -103,7 +101,7 @@ p {
 }
 
 a {
-  color: #1199c3;
+  color: #19b;
   text-decoration: none;
   margin-top: 10px;
   display: block;
@@ -112,7 +110,7 @@ a {
 .welcome-message {
   font-style: italic;
   font-size: 18px;
-  color: #f3f3f3;
+  color: #eee;
   line-height: 28px;
 }
 
@@ -122,13 +120,10 @@ a {
 }
 
 .ft-color {
-  background-color: #80b5b7;
+  background-color: #8bb;
 }
 
-.orange-text {
-  color: #f5ae23;
-}
-.black-text{
+.black-text {
   color: black;
 }
 
@@ -138,18 +133,18 @@ a {
 }
 
 .gray {
-  background-color: #f3f3f3;
+  background-color: #eee;
   padding-bottom: 10px;
   clear: both;
 }
 
 .dark-gray {
-  background-color: #4a4a4a;
+  background-color: #444;
 }
 
 /* TODO: Replace with image later */
 #header {
-  background-color: #80b5b7;
+  background-color: #8bb;
   color: black;
 }
 
@@ -200,30 +195,41 @@ span {
   text-align: center;
 }
 
-.imgContain{
+.imgContain {
 }
 
-.modal{
-  display :block;
+.modal {
+  display: block;
   position: relative;
   z-index: 1;
   width: 100%;
   max-width: 100%;
   margin: 0.5em auto;
-  box-shadow: unset;
+  box-shadow: none;
 }
 
-.pop-modal{
-  display :block;
-  position:fixed;
+.pop-modal {
+  display: block;
+  position: fixed;
   z-index: 1;
-  width:50vw;
+  width: 50vw;
   top: 10%;
   left: 25%;
   margin: 20px;
   height: 390px;
 }
 
+#map {
+  display: block;
+  height: 100%;
+  margin: 0 5%;
+}
+
+#mapDiv {
+  height: 400px;
+  width: 100%;
+  padding-bottom: 5%;
+}
 
 /* Media queries to handle various device widths */
 @media only screen and (max-width: 1024px) {
@@ -242,24 +248,14 @@ span {
   #lets-connect {
     margin-top: 10%;
   }
+
   .biopic {
     width: 150px;
   }
+
   .welcome-message {
     display: none;
   }
-}
-
-#map {
-  display: block;
-  height: 100%;
-  margin: 0 5%;
-}
-
-#mapDiv {
-  height: 400px;
-  width: 100%;
-  padding-bottom: 5%;
 }
 
 @media only screen and (min-width: 750px) {
