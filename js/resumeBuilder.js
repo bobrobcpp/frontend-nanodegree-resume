@@ -22,7 +22,6 @@ bio.display = function() {
     var formatPhone = HTMLmobile.replace("%data%", bio.contacts.mobile);
     var formatPic = HTMLbioPic.replace("%data%", bio.biopic);
     var formatLocation = HTMLlocation.replace("%data%", bio.contacts.location);
-    // var formatskills = HTMLskills.replace("%data%", bio.skills);
     var formatWelcomeMessage = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
     $("#header").prepend(formatRole);
     $("#header").prepend(formatName);
@@ -190,18 +189,12 @@ projects.display = function() {
     });
 };
 
-
-
-
 // Function calls to run page and display all sections
 bio.display();
 work.display();
 projects.display();
 education.display();
 $("#mapDiv").append(googleMap);
-
-
-
 
 // Optional addition of internationalize button of bio name with required inName function used in helper.js
 $("#main").append(internationalizeButton);
