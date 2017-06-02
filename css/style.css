@@ -18,11 +18,14 @@ h6 {
   overflow: auto;
 }
 
+
 .education-entry,
 .work-entry,
 .project-entry {
   padding: 0 5%;
 }
+
+
 .container{
   padding: 0 4%;
   margin: 2px;
@@ -75,16 +78,14 @@ h3,
 h4,
 h5 {
   padding: 10px 5%;
-
 }
-
 
 .date-text {
   font-style: italic;
   font-size: 14px;
   color: #999;
   line-height: 16px;
-  float: left;
+  float: none;
 }
 
 .location-text {
@@ -93,7 +94,6 @@ h5 {
   color: #999;
   line-height: 16px;
   float: right;
-
 }
 
 p {
@@ -151,7 +151,6 @@ a {
 #header {
   background-color: #80b5b7;
   color: black;
-
 }
 
 .flex-box {
@@ -169,6 +168,7 @@ a {
   flex-wrap: nowrap;
   padding: 10px;
 }
+
 .flex-row {
   display: flex;
   flex-direction: row;
@@ -192,9 +192,6 @@ ul {
   display: none;
 }
 
-
-
-
 span {
   padding: 5px;
 }
@@ -204,12 +201,31 @@ span {
 }
 
 .imgContain{
+}
 
+.modal{
+  display :block;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 100%;
+  margin: 0.5em auto;
+  box-shadow: unset;
+}
+
+.pop-modal{
+  display :block;
+  position:fixed;
+  z-index: 1;
+  width:50vw;
+  top: 10%;
+  left: 25%;
+  margin: 20px;
+  height: 390px;
 }
 
 
 /* Media queries to handle various device widths */
-
 @media only screen and (max-width: 1024px) {
   #lets-connect {
     margin-top: 5%;
@@ -256,24 +272,5 @@ span {
 
 
 
-.modal{
-  display :block;
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  max-width: 100%;
-  margin: 0.5em auto;
-  box-shadow: unset;
-}
 
-.pop-modal{
-  display :block;
-  position:fixed;
-  z-index: 1;
-  width:50vw;
-  top: 10%;
-  left: 25%;
-  margin: 20px;
-  height: 390px;
-}
 
