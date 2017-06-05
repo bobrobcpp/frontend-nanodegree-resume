@@ -25,11 +25,10 @@ bio.display = function() {
     var formatWelcomeMessage = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
     $("#header").prepend(formatRole);
     $("#header").prepend(formatName);
-    $("#topContacts").append(formatGit, formatPhone, formatEmail, formatLocation);
     $("#header").append(formatPic, formatWelcomeMessage);
     $("#main").append(work.position);
     $("#main").append(education.name);
-    $("#footerContacts").append(formatGit, formatPhone, formatEmail, formatLocation);
+    $("#topContacts, #footerContacts").append(formatGit, formatPhone, formatEmail, formatLocation);
 
     if (bio.skills.length > 0) {
         $("#header").append(HTMLskillsStart);
@@ -46,7 +45,7 @@ var education = {
     "schools": [{
             "name": "University College London",
             "location": "London",
-            "dates": 2011,
+            "dates": "2011",
             "degree": "MSc",
             "majors": ["Hydrographic Surveying"],
             "url": "https://www.ucl.ac.uk/"
@@ -54,7 +53,7 @@ var education = {
         {
             "name": "University of Sheffield",
             "location": "Sheffield",
-            "dates": 2009,
+            "dates": "2009",
             "degree": "BA",
             "majors": ["Geography"],
             "url": "https://www.sheffield.ac.uk/"
