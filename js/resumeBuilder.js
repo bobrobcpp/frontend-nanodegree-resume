@@ -45,7 +45,7 @@ var education = {
     "schools": [{
             "name": "University College London",
             "location": "London",
-            "dates": "2011",
+            "dates": "2010 - 2011",
             "degree": "MSc",
             "majors": ["Hydrographic Surveying"],
             "url": "https://www.ucl.ac.uk/"
@@ -53,7 +53,7 @@ var education = {
         {
             "name": "University of Sheffield",
             "location": "Sheffield",
-            "dates": "2009",
+            "dates": "2006 - 2009",
             "degree": "BA",
             "majors": ["Geography"],
             "url": "https://www.sheffield.ac.uk/"
