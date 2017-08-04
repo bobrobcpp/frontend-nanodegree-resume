@@ -1,6 +1,9 @@
 // This file containsJavascript objects containing personal information in sections: bio, work, projects and education and functions to display them
 // Bio section and display function definition
-var bio = {
+
+var model = {
+
+     bio : {
     "name": "Robert King",
     "role": "Web Developer",
     "contacts": {
@@ -12,36 +15,10 @@ var bio = {
     "welcomeMessage": "Welcome, please contact me with any queries.",
     "skills": ["HTML", "CSS", "C#", "Geomatics", "Surveying", "Hydrography"],
     "biopic": "images/me.jpg"
-};
-
-bio.display = function() {
-    var formatName = HTMLheaderName.replace("%data%", bio.name);
-    var formatRole = HTMLheaderRole.replace("%data%", bio.role);
-    var formatGit = HTMLgithub.replace("%data%", bio.contacts.github);
-    var formatEmail = HTMLemail.replace("%data%", bio.contacts.email);
-    var formatPhone = HTMLmobile.replace("%data%", bio.contacts.mobile);
-    var formatPic = HTMLbioPic.replace("%data%", bio.biopic);
-    var formatLocation = HTMLlocation.replace("%data%", bio.contacts.location);
-    var formatWelcomeMessage = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
-    $("#header").prepend(formatRole);
-    $("#header").prepend(formatName);
-    $("#header").append(formatPic, formatWelcomeMessage);
-    $("#main").append(work.position);
-    $("#main").append(education.name);
-    $("#topContacts, #footerContacts").append(formatGit, formatPhone, formatEmail, formatLocation);
-
-    if (bio.skills.length > 0) {
-        $("#header").append(HTMLskillsStart);
-        for (var i = 0; i < bio.skills.length; i++) {
-            var formatSkill = HTMLskills.replace("%data%", bio.skills[i]);
-            $("#skills").append(formatSkill);
-        }
-    }
-};
-
+},
 
 // Education section and display function definition
-var education = {
+education : {
     "schools": [{
             "name": "University College London",
             "location": "London",
@@ -72,9 +49,101 @@ var education = {
             "url": "https://classroom.udacity.com/me"
         }
     ]
-};
+},
+// Work section and display function definition
+    work : {
+    "jobs": [{
+            "title": "Hydrographic Surveyor",
+            "employer": "Freelance",
+            "dates": "Dec 2016-Present",
+            "location": "London",
+            "description": "Navigational surveying and multibeam processing for geophysical surveys"
+        },
+        {
+            "title": "Hydrographic Surveyor",
+            "employer": "Gardline Geosurvey",
+            "dates": "Jan 2012- Dec 2016",
+            "location": "North Sea",
+            "description": "Navigational surveying and multibeam processing for geophysical surveys"
+        }
+    ]
+},
+// Projects section and display function definition
+projects : {
+    "projects": [{
+            "title": "Portfolio Project",
+            "dates": "April 2017 - May 2017",
+            "description": "Created a responsive website with HMTL, CSS and media queries",
+            "url": "https://github.com/bobrobcpp/portfolio/",
+            "images": ["images/la-420.jpg", "images/tiber-420.jpg", "images/salalah-420.jpg"]
+        },
+        {
+            "title": "Unity Project",
+            "dates": "April 2017 - May 2017",
+            "description": "Playing around in the unity editor",
+            "url": "https://github.com/bobrobcpp/unity-test-2017/",
+            "images": ["images/unity1-420.jpg", "images/unity2-420.jpg", "images/unity3-420.jpg"]
+        }
+    ]
+}
 
-education.display = function() {
+}
+
+var octupus = {
+    init: function(){
+// Function calls to run page and display all sections
+        view.displayBio();
+        view.displayWork();
+        view.displayProjects();
+        view.displayEducation();
+        mapView.init();
+    },
+    getBio: function(){
+        return model.bio;
+    },
+    getEducation: function(){
+        return model.education;
+    },
+    getWork: function(){
+        return model.work;
+    },
+    getProjects: function(){
+        return model.projects;
+    }
+
+
+//end of octupus
+}
+
+var view = {
+    displayBio : function() {
+    var bio = octupus.getBio();
+    var formatName = HTMLheaderName.replace("%data%", bio.name);
+    var formatRole = HTMLheaderRole.replace("%data%", bio.role);
+    var formatGit = HTMLgithub.replace("%data%", bio.contacts.github);
+    var formatEmail = HTMLemail.replace("%data%", bio.contacts.email);
+    var formatPhone = HTMLmobile.replace("%data%", bio.contacts.mobile);
+    var formatPic = HTMLbioPic.replace("%data%", bio.biopic);
+    var formatLocation = HTMLlocation.replace("%data%", bio.contacts.location);
+    var formatWelcomeMessage = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
+    $("#header").prepend(formatRole);
+    $("#header").prepend(formatName);
+    $("#header").append(formatPic, formatWelcomeMessage);
+    $("#main").append(octupus.getWork().position);
+    $("#main").append(octupus.getEducation().name);
+    $("#topContacts, #footerContacts").append(formatGit, formatPhone, formatEmail, formatLocation);
+
+    if (bio.skills.length > 0) {
+        $("#header").append(HTMLskillsStart);
+        for (var i = 0; i < bio.skills.length; i++) {
+            var formatSkill = HTMLskills.replace("%data%", bio.skills[i]);
+            $("#skills").append(formatSkill);
+        }
+    }
+},
+
+displayEducation : function() {
+    var education = octupus.getEducation();
     if (education.schools.length > 0) {
         for (var i = 0; i < education.schools.length; i++) {
             $("#education").append(HTMLschoolStart);
@@ -97,29 +166,9 @@ education.display = function() {
             $(".education-entry:last").append(formatOnlineDates);
         }
     }
-};
-
-
-// Work section and display function definition
-var work = {
-    "jobs": [{
-            "title": "Hydrographic Surveyor",
-            "employer": "Freelance",
-            "dates": "Dec 2016-Present",
-            "location": "London",
-            "description": "Navigational surveying and multibeam processing for geophysical surveys"
-        },
-        {
-            "title": "Hydrographic Surveyor",
-            "employer": "Gardline Geosurvey",
-            "dates": "Jan 2012- Dec 2016",
-            "location": "North Sea",
-            "description": "Navigational surveying and multibeam processing for geophysical surveys"
-        }
-    ]
-};
-
-work.display = function() {
+},
+displayWork : function() {
+    var work = octupus.getWork();
     for (var i = 0; i < work.jobs.length; i++) {
         $("#workExperience").append(HTMLworkStart);
         var formatEmployer = HTMLworkEmployer.replace("%data%", (work.jobs[i].employer)).replace("#", "https://en.wikipedia.org/wiki/Hydrographic_survey");
@@ -131,29 +180,10 @@ work.display = function() {
         $(".work-entry:last").append(formatJDates + formatJLocation);
         $(".work-entry:last").append(formatJDescription);
     }
-};
+},
 
-
-// Projects section and display function definition
-var projects = {
-    "projects": [{
-            "title": "Portfolio Project",
-            "dates": "April 2017 - May 2017",
-            "description": "Created a responsive website with HMTL, CSS and media queries",
-            "url": "https://github.com/bobrobcpp/portfolio/",
-            "images": ["images/la-420.jpg", "images/tiber-420.jpg", "images/salalah-420.jpg"]
-        },
-        {
-            "title": "Unity Project",
-            "dates": "April 2017 - May 2017",
-            "description": "Playing around in the unity editor",
-            "url": "https://github.com/bobrobcpp/unity-test-2017/",
-            "images": ["images/unity1-420.jpg", "images/unity2-420.jpg", "images/unity3-420.jpg"]
-        }
-    ]
-};
-
-projects.display = function() {
+displayProjects : function() {
+    var projects = octupus.getProjects();
     for (var i = 0; i < projects.projects.length; i++) {
         $("#projects").append(HTMLprojectStart);
         var formatPTitle = HTMLprojectTitle.replace("%data%", projects.projects[i].title).replace("#", projects.projects[i].url);
@@ -186,20 +216,37 @@ projects.display = function() {
             $('*').css('opacity', 1);
         }
     });
-};
+}
 
-// Function calls to run page and display all sections
-bio.display();
-work.display();
-projects.display();
-education.display();
-$("#mapDiv").append(googleMap);
+}
+
+var mapView = {
+    init : function(){
+        $("#mapDiv").append(googleMap);
+    }
+}
+
+
+
+
+
+
+octupus.init();
+
+
+
+
+
+
+
+
+
 
 // Optional addition of internationalize button of bio name with required inName function used in helper.js
-$("#main").append(internationalizeButton);
-var inName = (function(name) {
-    var nameArray = name.split(" ");
-    var firstLetter = nameArray[0].slice(0, 1).toUpperCase();
-    var theRest = nameArray[0].slice(1, nameArray[0].length).toLowerCase();
-    return firstLetter + theRest + " " + nameArray[1].toUpperCase();
-});
+// $("#main").append(internationalizeButton);
+// var inName = (function(name) {
+//     var nameArray = name.split(" ");
+//     var firstLetter = nameArray[0].slice(0, 1).toUpperCase();
+//     var theRest = nameArray[0].slice(1, nameArray[0].length).toLowerCase();
+//     return firstLetter + theRest + " " + nameArray[1].toUpperCase();
+// });

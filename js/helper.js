@@ -46,6 +46,7 @@ var internationalizeButton = '<button>Internationalize</button>';
 var googleMap = '<div id="map"></div>';
 
 
+
 /*
 The Internationalize Names challenge found in the lesson Flow Control from JavaScript Basics requires you to create a function that will need this helper code to run. Don't delete! It hooks up your code to the button you'll be appending.
 */
@@ -109,6 +110,9 @@ function initializeMap() {
   written for bio, education, and work.
   */
   function locationFinder() {
+    var bio = octupus.getBio();
+    var education = octupus.getEducation();
+    var work = octupus.getWork();
 
     // initializes an empty array
     var locations = [];
