@@ -7,13 +7,13 @@ var model = {
     "name": "Robert King",
     "role": "Web Developer",
     "contacts": {
-        "mobile": "1234",
+        "mobile": "07969842583",
         "email": "king.roob@gmail.com",
         "github": "bobrobcpp",
         "location": "London"
     },
     "welcomeMessage": "Welcome, please contact me with any queries.",
-    "skills": ["HTML", "CSS", "C#", "Geomatics", "Surveying", "Hydrography"],
+    "skills": ["JavaScript", "jQuery", "Knockout.js", "HTML", "CSS", "C#", "Hydrographic Surveying"],
     "biopic": "images/me.jpg"
 },
 
@@ -39,7 +39,7 @@ education : {
     "onlineCourses": [{
             "title": "Front End Web Developer Nanodegree",
             "school": "Udacity",
-            "dates": "March 2017-Present",
+            "dates": "March 2017-September 2017",
             "url": "https://classroom.udacity.com/me"
         },
         {
@@ -70,7 +70,33 @@ education : {
 },
 // Projects section and display function definition
 projects : {
-    "projects": [{
+    "projects": [
+        {
+            "title": "Neighbourhood Map- London",
+            "dates": "August 2017 - September 2017",
+            "description": "A responsive neighbourhood map of central London utilising GoogleMaps API and drawing local information from Foursquare API",
+            "url": "https://bobrobcpp.github.io/neighbourhood-map/",
+            "images": ["images/la-420.jpg", "images/tiber-420.jpg", "images/salalah-420.jpg"]
+        },
+
+       {
+            "title": "Web Performance Project: Performant Pizza",
+            "dates": "July 2017",
+            "description": "Tuned a janky website to run smoothly at 60fps",
+            "url": "https://github.com/bobrobcpp/pizza-performance",
+            "images": ["images/la-420.jpg", "images/tiber-420.jpg", "images/salalah-420.jpg"]
+        },
+
+               {
+            "title": "HTML Canvas Project: Frogger Game",
+            "dates": "June 2017",
+            "description": "Built a frogger clone upon a Udacity provided template",
+            "url": "https://github.com/bobrobcpp/pizza-performance",
+            "images": ["images/la-420.jpg", "images/tiber-420.jpg", "images/salalah-420.jpg"]
+        },
+
+
+        {
             "title": "Portfolio Project",
             "dates": "April 2017 - May 2017",
             "description": "Created a responsive website with HMTL, CSS and media queries",
