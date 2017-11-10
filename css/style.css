@@ -231,6 +231,11 @@ span {
   padding-bottom: 5%;
 }
 
+#github {
+  display: inline;
+  color: white;
+}
+
 /* Media queries to handle various device widths */
 @media only screen and (max-width: 1024px) {
   #lets-connect {

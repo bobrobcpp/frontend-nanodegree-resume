@@ -7,9 +7,8 @@ var model = {
     "name": "Robert King",
     "role": "Web Developer",
     "contacts": {
-        "mobile": "07969842583",
         "email": "king.roob@gmail.com",
-        "github": "bobrobcpp",
+        "github": "<a id='github' href='https://github.com/bobrobcpp'> bobrobcpp </>",
         "location": "London"
     },
     "welcomeMessage": "Welcome, please contact me with any queries.",
@@ -52,19 +51,20 @@ education : {
 },
 // Work section and display function definition
     work : {
-    "jobs": [{
-            "title": "Hydrographic Surveyor",
-            "employer": "Freelance",
-            "dates": "Dec 2016-Present",
-            "location": "London",
-            "description": "Navigational surveying and multibeam processing for geophysical surveys"
-        },
+    "jobs": [
+        // {
+        //     "title": "Hydrographic Surveyor",
+        //     "employer": "Freelance",
+        //     "dates": "Dec 2016-Present",
+        //     "location": "London",
+        //     "description": "Navigational surveying and multibeam processing for geophysical surveys"
+        // },
         {
             "title": "Hydrographic Surveyor",
             "employer": "Gardline Geosurvey",
             "dates": "Jan 2012- Dec 2016",
             "location": "North Sea",
-            "description": "Navigational surveying and multibeam processing for geophysical surveys"
+            "description": "Navigational surveying and multibeam processor for geophysical surveys offshore primarily for the energy industries"
         }
     ]
 },
@@ -76,23 +76,24 @@ projects : {
             "dates": "August 2017 - September 2017",
             "description": "A responsive neighbourhood map of central London utilising GoogleMaps API and drawing local information from Foursquare API",
             "url": "https://bobrobcpp.github.io/neighbourhood-map/",
-            "images": ["images/la-420.jpg", "images/tiber-420.jpg", "images/salalah-420.jpg"]
+            "images": ["images/nm1-420.jpg", "images/nm2-420.jpg", "images/nm3-420.jpg"]
         },
 
        {
             "title": "Web Performance Project: Performant Pizza",
             "dates": "July 2017",
-            "description": "Tuned a janky website to run smoothly at 60fps",
+            "description": "Tuned a janky website to run animations smoothly at 60fps",
             "url": "https://github.com/bobrobcpp/pizza-performance",
-            "images": ["images/la-420.jpg", "images/tiber-420.jpg", "images/salalah-420.jpg"]
+            "images": ["images/pizza-420.jpg"]
+
         },
 
                {
             "title": "HTML Canvas Project: Frogger Game",
             "dates": "June 2017",
-            "description": "Built a frogger clone upon a Udacity provided template",
-            "url": "https://github.com/bobrobcpp/pizza-performance",
-            "images": ["images/la-420.jpg", "images/tiber-420.jpg", "images/salalah-420.jpg"]
+            "description": "A simple frogger clone using JavaScript and HTML Canvas",
+            "url": "https://github.com/bobrobcpp/frontend-nanodegree-arcade-game-",
+            "images": ["images/frog1-420.jpg", "images/frog2-420.jpg", "images/frog3-420.jpg"]
         },
 
 
@@ -106,7 +107,7 @@ projects : {
         {
             "title": "Unity Project",
             "dates": "April 2017 - May 2017",
-            "description": "Playing around in the unity editor",
+            "description": "Experimenting with the Unity editor",
             "url": "https://github.com/bobrobcpp/unity-test-2017/",
             "images": ["images/unity1-420.jpg", "images/unity2-420.jpg", "images/unity3-420.jpg"]
         }
@@ -148,16 +149,17 @@ var view = {
     var formatRole = HTMLheaderRole.replace("%data%", bio.role);
     var formatGit = HTMLgithub.replace("%data%", bio.contacts.github);
     var formatEmail = HTMLemail.replace("%data%", bio.contacts.email);
-    var formatPhone = HTMLmobile.replace("%data%", bio.contacts.mobile);
+    // var formatPhone = HTMLmobile.replace("%data%", bio.contacts.mobile);
     var formatPic = HTMLbioPic.replace("%data%", bio.biopic);
     var formatLocation = HTMLlocation.replace("%data%", bio.contacts.location);
     var formatWelcomeMessage = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
     $("#header").prepend(formatRole);
     $("#header").prepend(formatName);
-    $("#header").append(formatPic, formatWelcomeMessage);
+    // $("#header").append(formatPic, formatWelcomeMessage);
+    $("#header").append(formatWelcomeMessage);
     $("#main").append(octupus.getWork().position);
     $("#main").append(octupus.getEducation().name);
-    $("#topContacts, #footerContacts").append(formatGit, formatPhone, formatEmail, formatLocation);
+    $("#topContacts, #footerContacts").append(formatGit, /*formatPhone,*/ formatEmail, formatLocation);
 
     if (bio.skills.length > 0) {
         $("#header").append(HTMLskillsStart);
