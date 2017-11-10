@@ -2,7 +2,7 @@
   "name": "frontend-nanodegree-resume",
   "version": "1.0.0",
   "description": "Review the Online Resume [Project Rubric](https://review.udacity.com/?_ga=1.189245867.12280332.1465333852#!/projects/2962818615/rubric).",
-  "main": "index.js",
+  "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
