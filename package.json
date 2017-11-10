@@ -2,9 +2,10 @@
   "name": "frontend-nanodegree-resume",
   "version": "1.0.0",
   "description": "Review the Online Resume [Project Rubric](https://review.udacity.com/?_ga=1.189245867.12280332.1465333852#!/projects/2962818615/rubric).",
-  "main": "index.html",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "harp server --port $PORT"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/bobrobcpp/frontend-nanodegree-resume/issues"
   },
-  "homepage": "https://github.com/bobrobcpp/frontend-nanodegree-resume#readme"
+  "homepage": "https://github.com/bobrobcpp/frontend-nanodegree-resume#readme",
+  "dependencies": {
+    "harp": "^0.24.1"
+  }
 }
